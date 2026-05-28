@@ -1,6 +1,8 @@
 services:
   sara-gateway:
-    image: ghcr.io/nousresearch/hermes-agent:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: sara-gateway
     restart: unless-stopped
     volumes:
@@ -16,7 +18,9 @@ services:
     command: ["gateway", "run"]
 
   sara-dashboard:
-    image: ghcr.io/nousresearch/hermes-agent:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: sara-dashboard
     restart: unless-stopped
     depends_on:
